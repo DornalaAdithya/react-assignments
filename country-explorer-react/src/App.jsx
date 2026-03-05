@@ -11,7 +11,7 @@ function App() {
   async function getCountriesData() {
     setLoading(true);
     try {
-      const res = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,currencies,flags");
+      const res = await fetch("https://restcountries.com/v3.1/all?fields=name,capital,population,region,currencies,flags");
       if (res.status !== 200) {
         throw new Error("Failed to fetch the countries data");
       }
