@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import CountryList from "./components/CountryList";
 import SearchBar from "./components/SearchBar";
+import "./App.css";
 
 function App() {
   const [countries, setCountries] = useState([]);
@@ -37,12 +38,12 @@ function App() {
   const filterdCountries = countries.filter((countryObj) => countryObj.name.common.toLowerCase().includes(query.toLowerCase()));
 
   return (
-    <div className="flex flex-col gap-8 items-center">
-      <header className="text-5xl font-bold text-center">Country Explorer</header>
+    <div className="flex flex-col gap-8 items-center bg-gray-200 min-h-screen">
+      <header className="text-5xl font-bold text-center bg-blue-500 w-full p-5">Country Explorer</header>
       <SearchBar userSearch={setQuery} />
       {/* conditional rendering */}
-      {loading && <p className="text-5xl text-center">Loading...</p>}
-      {error && <p className="text-5xl text-center">Error : {error}</p>}
+      {loading && <p className="text-5xl text-center text-red-400 font-medium">Loading...</p>}
+      {error && <p className="text-5xl text-center text-red-500 font-medium">Error : {error}</p>}
       {!loading && !error && <CountryList countries={filterdCountries} />}
     </div>
   );

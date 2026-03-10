@@ -16,7 +16,7 @@ function SearchBar({ userSearch }) {
           type="text"
           autoFocus={true}
           placeholder="search country"
-          className="px-2 py-1 border rounded"
+          className="px-3 py-1 border rounded w-60 h-12"
           onChange={(e) => handleChange(e.target.value)}
         />
       </form>
