@@ -1,16 +1,29 @@
-# React + Vite
+# React Demo: Products
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This folder contains a React assignment focused on rendering and managing a list of products within a user interface.
 
-Currently, two official plugins are available:
+## Technologies Used
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+*   **React (v19)**: The core JavaScript library used to build the interactive, component-based user interface.
+*   **Vite**: The build tool utilized to serve the application locally with incredibly fast Hot Module Replacement (HMR).
+*   **Tailwind CSS**: Used to quickly and responsively style the product cards and layout directly within the JSX files using utility classes.
 
-## React Compiler
+## Core Concepts Covered
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+*   **JSX**: A syntax extension for JavaScript that looks similar to XML or HTML. It is used with React to describe what the UI should look like.
+*   **Props (Properties)**: Arguments passed into React components. They are how data flows downwards from a parent component to a child component, allowing for dynamic rendering of product details.
+*   **List Rendering**: Using JavaScript array methods (like `.map()`) inside JSX to iterate over an array of product data and render a React component or HTML element for each item.
+*   **Keys**: Special string attributes you need to include when creating lists of elements. Keys help React identify which items have changed, are added, or are removed, optimizing the rendering process.
 
-## Expanding the ESLint configuration
+## How to Run
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1.  Open your terminal and navigate to this folder.
+2.  Install the required dependencies:
+    ```bash
+    npm install
+    ```
+3.  Start the development server:
+    ```bash
+    npm run dev
+    ```
+4.  Open the provided `localhost` URL in your browser to view the application.
