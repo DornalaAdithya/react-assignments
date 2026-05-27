@@ -1,30 +1,33 @@
-# Task Manager (React)
+# React Task Manager
 
-This folder contains a Task Manager assignment, a functional React application designed to handle creating, viewing, and managing tasks.
+This repository contains a fully functional CRUD (Create, Read, Update, Delete) Task Manager application. It demonstrates advanced React state management and complex form handling using external libraries.
 
-## Technologies Used
+## Application Architecture and Features
 
-*   **React (v19)**: The library used to structure the view layer of the application and manage dynamic component updates.
-*   **Vite**: The build environment powering the fast development cycle of this project.
-*   **Tailwind CSS**: A utility-first styling framework used to design the task lists, buttons, and input forms.
-*   **React Hook Form**: Integrated to handle the complexity of the task creation and editing forms, providing seamless data capture and validation.
+This project is built using **Vite**, **React 19**, **Tailwind CSS**, and notably, the **React Hook Form** library.
 
-## Core Concepts Covered
+### 1. Centralized State Management
+The core logic of the application revolves around the `TaskManager.jsx` component, which acts as the "source of truth".
+*   It utilizes the `useState` hook to maintain an array of task objects.
+*   It defines specific handler functions (e.g., `addTask`, `deleteTask`, `toggleTaskStatus`) that mutate this state array.
+*   These state-mutating functions are passed down as props to child components, ensuring that state is only ever updated predictably from the top down.
 
-*   **State Management**: Utilizing React's `useState` hook to keep track of the application's data over time (e.g., the current list of tasks, or the input value of a new task). When state changes, React automatically re-renders the affected components.
-*   **Event Handling**: Writing functions to respond to user interactions, such as clicking a "Delete" button or submitting the "Add Task" form (`onSubmit`, `onClick`, `onChange`).
-*   **Controlled vs Uncontrolled Inputs**: Understanding how form inputs interact with React state. `React Hook Form` often leverages uncontrolled inputs under the hood for performance, bridging the gap with custom hooks.
-*   **Component Composition**: Building complex UIs by assembling simpler, focused components together (e.g., placing a `TaskItem` component inside a `TaskList` component).
+### 2. Advanced Form Handling with React Hook Form
+The `AddTaskForm.jsx` component is responsible for capturing user input to create new tasks.
+*   Instead of relying on standard controlled inputs (which trigger a re-render on every keystroke), this component utilizes `react-hook-form`.
+*   The `useForm` hook is used to register inputs, drastically improving performance by leveraging uncontrolled components under the hood while still providing easy access to form data.
+*   The `handleSubmit` function from the library is used to intercept the form submission, validate the data, and then pass the sanitized task object back up to the `TaskManager` via a prop callback.
 
-## How to Run
+### 3. Component Composition and Data Flow
+The application follows a strict unidirectional data flow:
+*   **`App.jsx`**: The root layout wrapper.
+*   **`TaskManager.jsx`**: Holds the state (`tasks` array) and the business logic functions.
+*   **`AddTaskForm.jsx`**: Receives an `onAddTask` callback prop to send new data up.
+*   **`TaskList.jsx`**: Receives the `tasks` array as a prop and maps over it.
+*   **`TaskItem.jsx`**: Receives individual task data and callbacks (like `onDelete`) as props. It uses Tailwind CSS to style the task display and conditionally format text (like strike-throughs for completed tasks).
 
-1.  Open your terminal and navigate to this folder.
-2.  Install the required dependencies:
-    ```bash
-    npm install
-    ```
-3.  Start the development server:
-    ```bash
-    npm run dev
-    ```
-4.  Open the provided `localhost` URL in your browser to view the application.
+## Setup Instructions
+
+1.  Navigate into the project directory.
+2.  Run `npm install` to install dependencies.
+3.  Run `npm run dev` to start the Vite development server.
